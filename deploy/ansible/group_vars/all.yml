@@ -4,7 +4,7 @@ ansible_ssh_common_args: -o ForwardAgent=yes
 hostname: chipster
 wan_interface: wlan0
 lan_interface: wlan1
-pi_ssid: WuTangLAN
+chip_ssid: WuTangLAN
 wifi_password: googlybear
 default_puredata_patch: "/home/{{ lookup('env', 'USER') }}/inToOutLopSecond.pd"
 
