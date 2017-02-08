@@ -1,0 +1,20 @@
+# ensure ssh agent forwarding is on while deploying
+ansible_ssh_common_args: -o ForwardAgent=yes
+
+hostname: chipster
+wan_interface: wlan0
+lan_interface: wlan1
+pi_ssid: WuTangLAN
+wifi_password: googlybear
+default_puredata_patch: "/home/{{ lookup('env', 'USER') }}/inToOutLopSecond.pd"
+
+apt_packages:
+  - vim
+  - git
+  - curl
+  - isc-dhcp-server
+  - bind9
+  - hostapd
+
+apt_repos:
+  - deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
