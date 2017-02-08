@@ -11,3 +11,7 @@ This willModels a NextThingCo "Chip" single board computer, an arduino nano for 
 
 Simple johnny-five code is written to display how to use the stepper.
 
+`flash chip with fresh install of nogui`
+`login with screen /dev/ttyACM0`
+`sudo nmtui` follow onscreen commands to get device online to be provisioned.
+`ansible-playbook -i ip.of.chip.sbc, -u chip -k --ask-become-pass deploy/ansible/provision.yml`
