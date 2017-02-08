@@ -13,5 +13,7 @@ Simple johnny-five code is written to display how to use the stepper.
 
 `flash chip with fresh install of nogui`
 `login with screen /dev/ttyACM0`
+default user `chip` default password `chip`
 `sudo nmtui` follow onscreen commands to get device online to be provisioned.
+`ssh chip@ip.of.chip.sbc` to make sure RSA key fingerprint is accepted.
 `ansible-playbook -i ip.of.chip.sbc, -u chip -k --ask-become-pass deploy/ansible/provision.yml`
