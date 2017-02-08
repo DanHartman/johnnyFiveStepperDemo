@@ -8,6 +8,7 @@
     - raw: sudo apt-get -y install python-simplejson
   roles:
     - { role: user, tags: ['user'] }
+    - { role: installpackages, tags: ['installpackages'] }
     - { role: accesspoint, tags: ['accesspoint'] }
   handlers:
     - name: restart ssh
