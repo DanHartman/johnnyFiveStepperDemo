@@ -15,3 +15,4 @@ Simple johnny-five code is written to display how to use the stepper.
 `login with screen /dev/ttyACM0`
 `sudo nmtui` follow onscreen commands to get device online to be provisioned.
 `ansible-playbook -i ip.of.chip.sbc, -u chip -k --ask-become-pass deploy/ansible/provision.yml`
+`ssh ip.of.chip.sbc` && `sudo reboot` for networking to take effect.  Again, this should be done by an ansible handler
