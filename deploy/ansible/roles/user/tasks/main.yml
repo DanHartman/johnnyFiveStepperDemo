@@ -10,4 +10,4 @@
 - name: ensure local user's public key is on the host
   authorized_key:
     user: "{{ lookup('env', 'USER') }}"
-    key: "{{ lookup('file', '~/.ssh/id_rsa') }}"
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
