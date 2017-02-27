@@ -2,11 +2,12 @@
   hosts: all
   become: yes
   become_method: sudo
+  gather_facts: false
+  pre_tasks:
+    - raw: sudo apt-get update
+    - raw: sudo apt-get -y install python-simplejson
   roles:
-    - { role: installpackages, tags: ['installpackages'] }
-    - { role: accesspoint, tags: ['accesspoint'] }
-    - { role: ansible-lighttpd, tags: ['ansible-lighttpd'] }
-    - { role: raspapwebgui, tags: ['raspapwebgui'] }
+    - { role: user, tags: ['user'] }
   handlers:
     - name: restart ssh
       service:
