@@ -6,7 +6,7 @@ wan_interface: wlan0
 lan_interface: wlan1
 chip_ssid: WuTangLAN
 wifi_password: googlybear
-default_puredata_patch: "/home/{{ lookup('env', 'USER') }}/inToOutLopSecond.pd"
+
 
 apt_packages:
   - vim
@@ -15,6 +15,7 @@ apt_packages:
   - isc-dhcp-server
   - bind9
   - hostapd
+  - conntrack
 
 apt_repos:
   - deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main

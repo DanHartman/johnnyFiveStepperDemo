@@ -21,7 +21,7 @@ COMMIT
 -A INPUT -m state --state ESTABLISHED -j ACCEPT
 
 # enable traceroute rejections to get sent out
--A INPUT -p udp -m udp --dport 33434:33523 -j REJECT --reject-with icmp-port-unreachable
+#-A INPUT -p udp -m udp --dport 33434:33523 -j REJECT --reject-with icmp-port-unreachable
 
 # DNS - accept from LAN
 -A INPUT -i {{ lan_interface }} -p tcp --dport 53 -j ACCEPT
@@ -37,6 +37,8 @@ COMMIT
 -A INPUT -i {{ lan_interface }} -p udp --dport 67:68 -j ACCEPT
 
 # Open range of ports for communication with apps
+-A INPUT -i {{ wan_interface }} -p tcp --dport 80 -j ACCEPT
+-A INPUT -i {{ lan_interface }} -p tcp --dport 80 -j ACCEPT
 -A INPUT -i {{ wan_interface }} -p tcp --dport 55001:55050 -j ACCEPT
 -A INPUT -i {{ lan_interface }} -p tcp --dport 55001:55050 -j ACCEPT
 
