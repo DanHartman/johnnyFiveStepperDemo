@@ -1,0 +1,140 @@
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/sbin/ifdown wlan0"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/sbin/ifup wlan0"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/wifidata /etc/wpa_supplicant/wpa_supplicant.conf"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli scan_results"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli scan"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli reconfigure"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/hostapddata /etc/hostapd/hostapd.conf"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/etc/init.d/hostapd start"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/etc/init.d/hostapd stop"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/etc/init.d/dnsmasq start"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/etc/init.d/dnsmasq stop"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/dhcpddata /etc/dnsmasq.conf"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown -h now"
+    validate: "visudo -cf %s"
+
+- name: assign restrictive sudoer access to www-data user
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "www-data ALL=(ALL) NOPASSWD:/sbin/reboot"
+    validate: "visudo -cf %s"
+
+- name: remove /var/www directory
+  file:
+    state: absent
+    path: /var/www
+
+- name: raspap-webgui Repo Install
+  git:
+    repo: https://github.com/billz/raspap-webgui.git
+    dest: /var/www
+    accept_hostkey: True
+    force: Yes
+
+- name: set ownership of /var/www directory
+  file:
+    state: directory
+    recurse: yes
+    group: www-data
+    owner: www-data
+    path: /var/www
+
+- name: create /etc/raspap directory
+  file:
+    state: directory
+    path: /etc/raspap
+    group: www-data
+    owner: www-data
+    mode: 0744
+
+- name: Move the RaspAP configuration file to the correct location
+  copy:
+    remote_src: True
+    src: /var/www/raspap.php
+    dest: /etc/raspap
+    group: www-data
+    owner: www-data
