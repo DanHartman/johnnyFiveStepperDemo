@@ -11,6 +11,7 @@ This willModels a NextThingCo "Chip" single board computer, an arduino nano for 
 
 Simple johnny-five code is written to display how to use the stepper.
 
+
 * `flash chip with fresh install of nogui`
 * Disconnect from power and then connect to USB port
 * `login with screen /dev/ttyACM0`
