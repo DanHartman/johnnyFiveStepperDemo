@@ -103,6 +103,11 @@
     line: "www-data ALL=(ALL) NOPASSWD:/sbin/reboot"
     validate: "visudo -cf %s"
 
+- name: modify the www-data user
+  user:
+    name: www-data
+    shell: /bin/bash
+
 - name: remove /var/www directory
   file:
     state: absent
