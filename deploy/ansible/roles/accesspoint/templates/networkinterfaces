@@ -13,6 +13,8 @@ iface lo inet loopback
 # The WAN interface
 allow-hotplug {{ wan_interface }}
 iface {{ wan_interface }} inet dhcp
+pre-up wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf -B
+
 
 # The LAN interface
 auto {{ lan_interface }}
