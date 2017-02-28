@@ -108,6 +108,12 @@
     name: www-data
     shell: /bin/bash
 
+- name: add /sbin to $PATH so ifconfig and iwconfig can be used
+  lineinfile:
+    dest: /etc/environment
+    state: present
+    line: "PATH=\"$PATH:/sbin\""
+
 - name: remove /var/www directory
   file:
     state: absent
