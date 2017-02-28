@@ -16,6 +16,7 @@ apt_packages:
   - bind9
   - hostapd
   - conntrack
+  - wireless-tools
 
 apt_repos:
   - deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
